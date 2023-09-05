@@ -4,7 +4,9 @@ body {
   margin: 0;
 }
 
-.app {}
+.app {
+  background: #E5EBEF;
+}
 * {
   font-family: 'Alkatra', cursive;
   font-family: 'Carlito', sans-serif;
@@ -59,7 +61,21 @@ body {
   padding: 0px 15px;
 }
 
-
 .app_header__sort {
   margin: 0 10px;
+}
+
+.app_content__inner {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.app_content__pagination {
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
