@@ -1,3 +1,7 @@
+.card_wrapper {
+  list-style-type: none;
+  text-decoration: none;
+}
 .card {
   width: 230px;
   height: 230px;
@@ -9,6 +13,11 @@
   align-items: center;
   text-align: center;
 }
+.card:hover {
+  background: #FFCE10;
+  transition: 0.5s;
+}
+
 .card img {
   width: 200px;
 }
@@ -16,4 +25,5 @@
   margin: 0;
   text-transform: capitalize;
   font-weight: 400;
+  color: rgb(4, 4, 66);
 }
