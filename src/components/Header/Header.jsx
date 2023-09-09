@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { getPokemonById, searchPokemon, sortpokemons } from '../../store/pokemon.action';
+import { getPokemonById, getPokemons, searchPokemon, sortpokemons } from '../../store/pokemon.action';
 import { A_Z, Z_A, sortBy } from '../../utils';
 import useDebounce from '../../hooks/useDebounce';
 import styles from './Header.module.css';
@@ -11,7 +11,7 @@ export const Header = () => {
   const [currentType, setCurrentType] = useState();
   const { pokemon, pokemons } = useSelector((state) => state.pokemonReducer);
   const [inputValue, setInputValue] = useState('');
-  const debouncedValue = useDebounce(inputValue, 300); // Создайте экземпляр хука
+  const debouncedValue = useDebounce(inputValue, 300);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,8 +29,7 @@ export const Header = () => {
 
   const onSecondCityChange = (type) => {
     const sorted = sortBy(pokemons, type);
-    console.log(sorted, 'SORT');
-    dispatch(sortpokemons({results: sorted, count: 1}));
+    dispatch(sortpokemons({ results: sorted, count: 1 }));
     setCurrentType(type);
   };
 
@@ -40,7 +39,11 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    dispatch(searchPokemon(debouncedValue))
+    if (debouncedValue) {
+      dispatch(searchPokemon(debouncedValue))
+    } else {
+      dispatch(getPokemons());
+    }
   }, [debouncedValue]);
 
   return (
@@ -59,7 +62,6 @@ export const Header = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder="Search..."
                 />
-                <button>Search</button>
               </div>
               <div className={styles.header__sort}>
                 <Select

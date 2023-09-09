@@ -10,10 +10,7 @@ const App = () => {
   const dispatch = useDispatch();
   const { pokemons, loading } = useSelector((state) => state.pokemonReducer);
 
-  console.log(pokemons, 'pokemons');
-
   const onChangePagination = (pageNumber) => {
-    console.log('Page: ', pageNumber);
     dispatch(getPokemons(pageNumber));
   }
 
@@ -29,13 +26,15 @@ const App = () => {
             loading ?
               <Spin size="large" />
               :
-              pokemons?.results?.map((item, index) => (
+              pokemons.results ? pokemons.results?.map((item, index) => (
                 <Card
                   key={item.name}
                   item={item}
                   index={index}
                 />
               ))
+              :
+              ''
           }
         </div>
 
@@ -43,7 +42,7 @@ const App = () => {
           className={styles.app_content__pagination}
           defaultCurrent={1}
           showSizeChanger={false}
-          total={pokemons.count}
+          total={pokemons?.count || 1}
           onChange={onChangePagination}
         />
       </div>

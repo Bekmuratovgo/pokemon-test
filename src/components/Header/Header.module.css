@@ -40,7 +40,7 @@
 .header__search input {
   border: none;
   height: 100%;
-  border-radius: 5px 0 0 5px;
+  border-radius: 5px;
   font-size: 15px;
   padding-left: 8px;
 }
@@ -56,4 +56,18 @@
 
 .header__sort {
   margin: 0 10px;
+}
+@media screen and (max-width: 715px) {
+  .header_logo {
+    display: none;
+  }
+  .header_wrapper {
+    width: 100%;
+    margin: 0 20px;
+  }
+}
+@media screen and (max-width: 355px) {
+  .header__sort :global(.ant-select) {
+    width: 80px !important;
+  }
 }

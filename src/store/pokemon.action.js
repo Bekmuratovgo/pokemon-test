@@ -15,7 +15,6 @@ export const getPokemons = (offset = 0) => async dispatch => {
     message.success('Successful request!')
     
   } catch (error) {
-    console.log(error, 'ERR');
     message.error(error)
   }
   dispatch (pokemonSlice.actions.setLoading(false));
@@ -26,7 +25,6 @@ export const getPokemonById = (id) => async dispatch => {
     if (id) {
       const { data } = await axios.get(API + `/${id}`);
       dispatch(pokemonSlice.actions.setSuccessOnePokemon(data))
-      console.log(data, 'GET_ONE');
     } else {
       dispatch(pokemonSlice.actions.setSuccessOnePokemon(null))
     }
@@ -37,11 +35,14 @@ export const getPokemonById = (id) => async dispatch => {
 
 export const searchPokemon = (name) => async dispatch => {
   try {
-    const res = axios.get(`${API}/${name}`);
-    console.log(res, 'RES');
-    dispatch(pokemonSlice.actions.setSuccessData((await res).data.results));
+    const res = await axios.get(`${API}/${name}`);
+    dispatch(pokemonSlice.actions.setSuccessData(({results: [{...res.data}]})));
+    message.success('Found!')
   } catch (err) {
-    message.error('Покемон с таким именем не существует!')
+    message.error({
+      duration: 1,
+      content: 'Pokemon with that name does not exist!'
+    })
   }
 }  
 

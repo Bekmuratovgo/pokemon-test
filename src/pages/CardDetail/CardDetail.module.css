@@ -1,12 +1,14 @@
 .details {
   width: 100%;
   display: flex;
-  justify-content: center;
-  background: grey;
+  flex-direction: column;
+  align-items: center;
+  background: #E5EBEF;
 }
 .details_inner {
-  width: 90%;
+  width: 80%;
   margin-top: 20px;
+  margin-bottom: 20px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
@@ -14,38 +16,106 @@
 }
 
 .block_left {
-  width: 30%;
-  background: red;
+  width: 40%;
   margin: 10px;
+}
+.block_left img {
+  width: 100%;
 }
 .block_left h2 {
   text-align: center;
 }
 
 .block_center {
-  width: 30%;
+  width: 60%;
   margin: 10px;
 }
 .block_center p {
   padding: 10px;
   border-radius: 3px;
-  border: 1px solid grey;
+  border: 1px solid rgb(221, 221, 221);
+  max-width: 100px;
 }
+
 .block_center__parameters {
   margin-top: 20px;
-  background: aqua;
+  margin-bottom: 20px;
+  background: #eff3f7;
+  border-radius: 4px;
+  padding: 10px;
   display: flex;
   justify-content: center;
 }
 .block_center__parameters_left {
   width: 50%;
+  margin: 0 20px 0 0;
+}
+.block_center__parameters_left span {
+  font-weight: 600;
+}
+.block_center__parameters_right span {
+  font-weight: 600;
 }
 .block_center__parameters_right {
   width: 50%;
 }
 
+.block_center__type span {
+  font-weight: 600;
+}
+
 .block_right {
-  width: 30%;
-  background: green;
+  width: 80%;
+  border-radius: 4px;
   margin: 10px;
+  background: rgb(255, 255, 255);
+}
+.block_right__title {
+  margin: 20px 20px 10px 20px;
+  font-size: 22px;
+}
+.rate_active {
+  background: rgb(25, 81, 184);
+}
+.rate_disactive {
+  background: rgb(226, 226, 226);
+}
+.rate {
+  display: flex;
+}
+.rate_inner {
+  width: 60px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.rate_inner h5 {
+  text-transform: capitalize;
+  margin: 10px 10px 5px 10px;
+  font-weight: 400;
+}
+.rate_card {
+  margin: 4px;
+  width: 60px;
+  height: 15px;
+}
+@media screen and (max-width: 605px) {
+  .rate {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .details_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .block_left {
+    width: 80%;
+  }
+  .block_center {
+    width: 80%;
+  }
 }

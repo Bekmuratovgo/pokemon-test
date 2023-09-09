@@ -6,6 +6,7 @@ body {
 
 .app {
   background: #E5EBEF;
+  min-height: calc(100vh - 100px);
 }
 * {
   font-family: 'Alkatra', cursive;
