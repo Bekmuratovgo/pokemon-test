@@ -32,3 +32,17 @@ export const sortBy = (arr, type) => {
     return 0; // Если имена равны
   });
 }
+
+
+
+let arr = [
+  {
+    price: 100,
+  },
+  {
+    price: 100,
+  },
+  {
+    price: 100,
+  }
+]
